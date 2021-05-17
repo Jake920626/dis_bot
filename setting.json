@@ -1,4 +1,7 @@
 {
     "token" : "ODQzNzA0MzY1NzI5NDQ3OTc3.YKHu7A.juFFG_PnEojWEFW7EIyfdqfKbzA" ,
-    "pic" : "https://static.wikia.nocookie.net/bahapedia/images/e/ea/PA20161001090549.jpg/revision/latest/top-crop/width/360/height/450?cb=20180807083729&path-prefix=zh"
-}
+    "pic" : ["https://static.wikia.nocookie.net/bahapedia/images/e/ea/PA20161001090549.jpg/revision/latest/top-crop/width/360/height/450?cb=20180807083729&path-prefix=zh",
+        "https://lh4.googleusercontent.com/proxy/SoUqfI3StQvfkTglNz9OkffGjqE0uWbDpOZkv_4V5bdU1Yu-A7iKoGZCTznmi-JMijY62lwd0uOUCtZQUjQiVI2beuLSWEaVrzhm4R7dDC-OGlWYnQTr6GarjSce8K0v=w1200-h630-p-k-no-nu"],
+    "sen" : [ "幫我撐十秒" , "快還要更快！" ],
+    "help" : "輸入!10 help_me 可獲得幫助 \n輸入!10 starburst 可獲得星爆語錄 \n輸入!10 starburst_pic 可獲得星爆圖片"
+    }
