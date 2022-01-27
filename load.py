@@ -1,14 +1,14 @@
 import os
 import json
 
-def load () :
+def load (foldername) :
   jdata = {}
-  for filenames in os.listdir('text'):
-    with open ( f'text/{filenames}' , 'r') as jfile:
+  for filenames in os.listdir(f'{foldername}'):
+    with open ( f'{foldername}/{filenames}' , 'r') as jfile:
         print (jfile)
         jdata_unit = json.load(jfile)
         jdata.update(jdata_unit)
   return (jdata)
 
 if __name__ == "__main__":
-    print (load())
+    print (load(input()))
