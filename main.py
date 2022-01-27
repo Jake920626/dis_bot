@@ -1,14 +1,14 @@
+from turtle import update
 import discord
-from discord import file
 from discord.ext import commands
 import json
 import random
 import os
-import keep_alive
+#import keep_alive
 from load import load
 
 jdata = {}
-token = os.environ['token']
+#token = os.environ['token']
 
 jdata = load()
 
@@ -38,17 +38,6 @@ async def help_me(ctx):
     await ctx.send(jdata['help'])
 
 @bot.command()
-async def 星爆圖更新(ctx,arg):
-    global jdata
-    print (arg)
-    jdata['pic'].append(arg)
-    pic_update = {'pic':jdata['pic']} 
-    with open ('text/picture.json','w') as write_in:
-        json.dump(pic_update,write_in)
-    jdata = load()
-    await ctx.send('增加成功！')
-
-@bot.command()
 async def 重整(ctx):
     global jdata
     jdata = load()
@@ -65,5 +54,11 @@ async def 星爆語錄更新(ctx,arg):
     jdata = load()
     await ctx.send('增加成功！')
 
+bot.load_extension('cmds.update')
+print ('loaded')
+
+
 keep_alive.keep_alive()
-bot.run(token)
+
+if __name__ == "__main__":
+    bot.run(token)
