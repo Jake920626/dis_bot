@@ -22,6 +22,9 @@ class control ( core.classinit.Cog_Extension ) :
 	    jdata = load('text')
 	    await ctx.send('重整結束')
 
+	@commands.command()
+	async def test(ctx):
+		print(ctx.author)
 
 def setup(bot):
     bot.add_cog(control(bot))
