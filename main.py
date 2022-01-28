@@ -7,10 +7,17 @@ import os
 #import keep_alive
 from load import load
 
+Token  = str()
+t = {}
+with open ('token.json',"r") as tk:
+    t = json.load(tk)
+    print (t)
+    Token = str(t['token'])
+
 jdata = {}
 #token = os.environ['token']
 
-jdata = load()
+jdata = load('text')
 
 bot = commands.Bot(command_prefix='!10 ')
 
@@ -24,41 +31,28 @@ async def on_ready():
     print(">> bot is ready <<")
 
 @bot.command()
-async def 星爆語錄(ctx):
-    r_s = random.choice(jdata['sen'])
-    await ctx.send(r_s)
+async def load(ctx,extension):
+    bot.load_extension(F'cmds.{extension}')
+    await ctx.send(F'{extension} loaded')
 
 @bot.command()
-async def 星爆圖(ctx):
-    r_p = random.choice(jdata['pic'])
-    await ctx.send(r_p)
+async def reload(ctx,extension):
+    bot.reload_extension(F'cmds.{extension}')
+    await ctx.send(F'{extension} reloaded')
 
 @bot.command()
-async def help_me(ctx):
-    await ctx.send(jdata['help'])
+async def unload(ctx,extension):
+    bot.unload_extension(F'cmds.{extension}')
+    await ctx.send(F'{extension} unloaded')
 
-@bot.command()
-async def 重整(ctx):
-    global jdata
-    jdata = load()
-    await ctx.send('重整結束')
+for filename in os.listdir('cmds'):
+    if filename[-3::]  == '.py':
+        bot.load_extension(F"cmds.{filename[:-3]}")
 
-@bot.command()
-async def 星爆語錄更新(ctx,arg):
-    global jdata
-    print (arg)
-    jdata['sen'].append(arg)
-    sen_update = {'sen':jdata['sen']} 
-    with open ('text/quotes.json','w') as write_in:
-        json.dump(sen_update,write_in)
-    jdata = load()
-    await ctx.send('增加成功！')
-
-bot.load_extension('cmds.update')
 print ('loaded')
 
 
-keep_alive.keep_alive()
+#keep_alive.keep_alive()
 
 if __name__ == "__main__":
-    bot.run(token)
+    bot.run('ODQzNzA0MzY1NzI5NDQ3OTc3.YKHu7A.cZg58ZXjGF3dx1R5IG1s6pbAXRA')
