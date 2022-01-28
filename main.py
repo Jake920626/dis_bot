@@ -55,4 +55,4 @@ print ('loaded')
 #keep_alive.keep_alive()
 
 if __name__ == "__main__":
-    bot.run('ODQzNzA0MzY1NzI5NDQ3OTc3.YKHu7A.cZg58ZXjGF3dx1R5IG1s6pbAXRA')
+    bot.run(f'{Token}')
