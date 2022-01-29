@@ -5,7 +5,7 @@ import random
 import os
 
 import core.classinit
-from load import load
+from core.load import load
 
 jdata = load('text')
 

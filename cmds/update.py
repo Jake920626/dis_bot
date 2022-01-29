@@ -3,7 +3,7 @@ from discord.ext import commands
 import json
 
 import core.classinit
-from load import load
+from core.load import load
 
 jdata = load('text')
 

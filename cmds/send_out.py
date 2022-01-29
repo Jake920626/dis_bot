@@ -5,7 +5,7 @@ import random
 import os
 
 import core.classinit
-from load import load
+from core.load import load
 
 jdata = load('text')
 class send_out ( core.classinit.Cog_Extension ) :
@@ -34,7 +34,6 @@ class send_out ( core.classinit.Cog_Extension ) :
 	async def 星爆圖星爆我(self,ctx):
 	    r_p = random.choice(jdata['pic'])
 	    await ctx.author.send(r_p)
-
 
 def setup(bot):
     bot.add_cog(send_out(bot))
