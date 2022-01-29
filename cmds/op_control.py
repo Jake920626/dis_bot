@@ -27,9 +27,9 @@ class op_control (core.classinit.Cog_Extension):
 	            await ctx.send('請等待管理員確認喔！')
 	        else:
 	            Required_list[str(f'{ctx.author}')] = ctx.author.id
-	            with open('AdminRequired.json','w') as Required:
+	            with open('text/AdminRequired.json','w') as Required:
 	                json.dump(Required_list,Required)
-	            with open('AdminRequired.json','r') as Required:
+	            with open('text/AdminRequired.json','r') as Required:
 	                Required_list = json.load(Required)
 	            jdata = load('text')
 	            await ctx.send('已收到申請，請等待確認！')
@@ -53,7 +53,7 @@ class op_control (core.classinit.Cog_Extension):
 	            del Required_list[f'{Requirment}']#刪除待加入
 	            admin_update = {'admin':jdata['admin']} 
 	            Required_update = {'admin_required':jdata['admin_required']}
-	            with open('AdminRequired.json','w') as Required:
+	            with open('texy/AdminRequired.json','w') as Required:
 	                json.dump(Required_update,Required)
 	            with open ('text/administrator.json','w') as write_in:
 	                json.dump(admin_update,write_in)#寫入json中儲存
@@ -64,6 +64,32 @@ class op_control (core.classinit.Cog_Extension):
 	            await ctx.send('此人沒有申請喔！')
 	    else:
 	        await ctx.send('你沒有權限！')
+
+
+	#拔除資格
+	@commands.command()
+	async def op_deprive (self,ctx,Requirment):
+		global jdata
+		if str(ctx.author.id) in jdata['admin']:
+			exist = False
+			for id in jdata['admin']:
+				user = await self.bot.fetch_user(id)#抓管理員的名字
+				print(user)
+				print (Requirment)
+				if str(user) == str(Requirment):
+					exist = True
+					jdata['admin'].remove(id)
+					admin_update = {'admin':jdata['admin']} 
+					with open ('text/administrator.json','w') as write_in:
+						json.dump(admin_update,write_in)#寫入json中儲存
+					jdata = load('text')
+					await ctx.send('已將'+str(f'{Requirment}')+'從管理員中剔除！')
+			if exist == False:
+				await ctx.send('此人不是管理員。')
+		else:
+			await ctx.send('你沒有權限！')
+
+
 
 def setup(bot):
     bot.add_cog(op_control(bot))

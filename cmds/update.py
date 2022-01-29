@@ -35,5 +35,29 @@ class update ( core.classinit.Cog_Extension ) :
         jdata = load('text')
         await ctx.send('增加成功！')
 
+    #星爆圖刪除指令
+    @commands.command()
+    async def 星爆圖刪除(self,ctx,arg):
+        global jdata
+        print (arg)#確認網址為何
+        jdata['pic'].remove(str(arg))
+        pic_update = {'pic':jdata['pic']} 
+        with open ('text/picture.json','w') as write_in:
+            json.dump(pic_update,write_in)#寫入json中儲存
+        jdata = load('text')
+        await ctx.send('刪除成功！')
+
+    #星爆語錄刪除指令
+    @commands.command()
+    async def 星爆語錄刪除(self,ctx,arg):
+        global jdata
+        print (arg)
+        jdata['sen'].remove(str(arg))
+        sen_update = {'sen':jdata['sen']} 
+        with open ('text/quotes.json','w') as write_in:
+            json.dump(sen_update,write_in)#寫入json中儲存
+        jdata = load('text')
+        await ctx.send('刪除成功！')
+
 def setup(bot):
     bot.add_cog(update(bot))
