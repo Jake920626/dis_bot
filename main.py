@@ -1,11 +1,12 @@
 from turtle import update
 import discord
-from discord.ext import commands
+from discord.ext import commands,tasks
 import json
 import random
 import os
 #import keep_alive
 from core.load import load
+import asyncio
 
 jdata = {}
 #token = os.environ['token']
@@ -22,7 +23,6 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=game)
     
     print(">> bot is ready <<")
-
 
 for filename in os.listdir('cmds'):
     if filename[-3::]  == '.py':

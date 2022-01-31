@@ -23,8 +23,9 @@ class control ( core.classinit.Cog_Extension ) :
 	    await ctx.send('重整結束')
 
 	@commands.command()
-	async def test(ctx):
+	async def test(self,ctx):
 		print(ctx.author)
+		await ctx.send(str(ctx.author.mention))
 
 def setup(bot):
     bot.add_cog(control(bot))

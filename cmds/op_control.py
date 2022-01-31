@@ -27,11 +27,11 @@ class op_control (core.classinit.Cog_Extension):
 	            await ctx.send('請等待管理員確認喔！')
 	        else:
 	            Required_list[str(f'{ctx.author}')] = ctx.author.id
+	            admin_required_update = {'admin_required':Required_list}
 	            with open('text/AdminRequired.json','w') as Required:
-	                json.dump(Required_list,Required)
-	            with open('text/AdminRequired.json','r') as Required:
-	                Required_list = json.load(Required)
+	                json.dump(damin_required_update,Required)
 	            jdata = load('text')
+	            Required_list = jdata['admin_required']
 	            await ctx.send('已收到申請，請等待確認！')
 
 	#查看有誰申請
@@ -53,7 +53,7 @@ class op_control (core.classinit.Cog_Extension):
 	            del Required_list[f'{Requirment}']#刪除待加入
 	            admin_update = {'admin':jdata['admin']} 
 	            Required_update = {'admin_required':jdata['admin_required']}
-	            with open('texy/AdminRequired.json','w') as Required:
+	            with open('text/AdminRequired.json','w') as Required:
 	                json.dump(Required_update,Required)
 	            with open ('text/administrator.json','w') as write_in:
 	                json.dump(admin_update,write_in)#寫入json中儲存
